@@ -1,0 +1,85 @@
+@keyframes flapLeft {
+  0% {
+    transform: perspective(1100px) rotateX(30deg) rotateZ(-40deg) rotateY(10deg)
+      rotate3d(0, 0, 0, 30deg) translateY(0);
+  }
+  100% {
+    transform: perspective(1100px) rotateX(30deg) rotateZ(-40deg) rotateY(10deg)
+      rotate3d(0, -3, 0, 30deg) translateY(5px);
+  }
+}
+@keyframes flapRight {
+  0% {
+    transform: perspective(1100px) rotateX(30deg) rotateZ(-40deg)
+      rotateY(-120deg) rotate3d(0, 0, 0, 30deg) translateY(0);
+  }
+  100% {
+    transform: perspective(1100px) rotateX(30deg) rotateZ(-40deg)
+      rotateY(-120deg) rotate3d(0, 3, 0, 30deg) translateY(3px);
+  }
+}
+@keyframes rise {
+  0% {
+    transform: perspective(1100px) rotateX(30deg) rotateZ(-40deg)
+      translateX(calc(var(--butterfly-size) * 1.2)) translateY(0);
+  }
+  100% {
+    transform: perspective(1100px) rotateX(30deg) rotateZ(-40deg)
+      translateX(calc(var(--butterfly-size) * 1.2)) translateY(5px);
+  }
+}
+.Butterfly {
+  --butterfly-size: 2px;
+  --butterfly-color: white;
+  position: relative;
+  bottom: 48px;
+  right: 18px;
+  z-index: 1;
+}
+.body {
+  position: absolute;
+  top: calc(var(--butterfly-size) * 3);
+  width: var(--butterfly-size);
+  right: calc(-1 * var(--butterfly-size) / 2);
+  z-index: 1;
+  height: calc(var(--butterfly-size) * 10);
+  border-radius: 3px 5px 3px 5px;
+  animation: ease-in 0.3s rise infinite alternate;
+  background-color: var(--butterfly-color);
+  transform-origin: right;
+}
+.wing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(var(--butterfly-size) * 8);
+  height: calc(var(--butterfly-size) * 12);
+  border-radius: 18px 70px 30px 60px;
+  background-color: var(--butterfly-color);
+}
+.wing::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--butterfly-size) * 10);
+  right: 0;
+  width: calc(var(--butterfly-size) * 6);
+  height: calc(var(--butterfly-size) * 8);
+  border-radius: 60px 10px 60px 20px;
+  background-color: var(--butterfly-color);
+}
+.wing:not(:first-child) {
+  z-index: 2;
+  transform-origin: right;
+  perspective-origin: bottom;
+  animation: ease-in 0.3s flapRight infinite alternate;
+}
+.wing:first-child {
+  perspective-origin: bottom;
+  transform-origin: right;
+  animation: ease-in 0.3s flapLeft infinite alternate;
+}
+@media screen and (max-width: 300px) {
+  .Butterfly {
+    display: none;
+  }
+}
