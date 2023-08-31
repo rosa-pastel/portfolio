@@ -30,13 +30,11 @@ export default function Contact() {
     <>
       <Contact className="Contact">
         <MailHeading>MAIL</MailHeading>
-        <p>zeynepranamutlu@outlook.com</p>
-        <LinksHeading>SOCIAL MEDIAS</LinksHeading>
+        <p>hello@zeynep.page</p>
+        <LinksHeading>SOCIAL MEDIA</LinksHeading>
         <Links>
           <a href="https://github.com/rosa-pastel">GitHub</a>
-          <a href="https://www.linkedin.com/in/zeynep-rana-mutlu-5a0766277/">
-            LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/zeynep-rana-mutlu/">LinkedIn</a>
           <a href="https://www.upwork.com/freelancers/~0173a445d816530d45">
             Upwork
           </a>
